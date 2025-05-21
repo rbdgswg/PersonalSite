@@ -5,7 +5,6 @@
   --rubik-font: 'Rubik', sans-serif;
   --primary-text-color: #000; /* Black */
   --secondary-text-color: #6c757d; /* Light gray, often used for muted text */
-  --primary-bg-color: #fff;
   --section-padding: 5%; /* Consider using rem or em for better scalability */
   --title-image-radius: 20px;
   --max-width: 1200px; /*Limiting the width can improve readability*/
