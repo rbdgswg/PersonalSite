@@ -81,6 +81,10 @@ ul li{
   margin-bottom: 0.5rem; /*spacing for list items*/
 }
 
+#app {
+  color: #333; /* Dark grey color for good contrast */
+}
+
 /* Image Styles */
 .title-image {
   border-radius: var(--title-image-radius);
