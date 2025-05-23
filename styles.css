@@ -86,7 +86,10 @@ ul li{
   max-width: 400px; /*Added a max width*/
   height: auto; /*Maintain aspect ratio*/
 }
-
+img {
+  width: 300px;
+  height: auto; /* Browser calculates height to maintain aspect ratio */
+}
 /* Flexbox Layout */
 .d-flex {
   display: flex;
