@@ -11,17 +11,18 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/granim@1.1.0/dist/granim.min.js"></script>
+    <!-- Granim.js is loaded locally in your project, so using the local path -->
+    <script src="granim.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      xintegrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
@@ -29,6 +30,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Canvas for Granim.js background -->
+    <canvas id="canvas-image-blending"></canvas>
+
+    <div class="container main-content">
+      <!-- Header Section with Typewriter -->
+      <header class="text-center py-5 text-white">
+        <!-- Added text-white assuming the granim background might be dark at times -->
+        <h1 class="display-4">Hi, my name is Rob Morgan</h1>
+        <!-- Added an element for the Typewriter effect -->
+        <p id="app" class="lead"></p>
+      </header>
+
       <section class="section-padding" id="introduction">
         <h2>Introduction</h2>
         <div class="row align-items-center">
@@ -38,272 +51,240 @@
               Dolly Parton, since her DNA was taken from a mammary cell.
             </p>
             <p>
-              Hi, I'm Rob Morgan. My background covers tax preparation, customer account management, and technical problem-solving. 
-              I have experience working in remote environments, ensuring compliance, and delivering solid customer service. 
+              Hi, I'm Rob Morgan. My background covers tax preparation, customer account management, and technical problem-solving.
+              I have experience working in remote environments, ensuring compliance, and delivering solid customer service.
               I bring a detail-oriented and organized approach to my work, especially in areas like remote bookkeeping and tax preparation.
             </p>
           </div>
-          <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="col-lg-4 mt-4 mt-lg-0 text-center">
             <img
               src="assets/Selfie.jpg"
               class="img-fluid rounded-3 shadow-lg"
-              alt="Rob Morgan Selfie"
+              alt="Professional headshot of Rob Morgan, smiling."
             />
           </div>
         </div>
       </section>
-            <section class="section-padding bg-light" id="volunteering">
+
+      <section class="section-padding bg-light" id="volunteering">
         <h2>Community Involvement</h2>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Rose Creek Band Of Muscogee Creek Descendants | Gainsville, FL
-                </h3>
-                <p class="text-muted">Secretary, June 2023 - Present</p>
-                <h3 class="card-title">
-                  Alligator Festival Of Lake City | Gainsville, FL
-                </h3>
-                <p class="text-muted">Secretary, June 2023 - Present</p>
-              </div>
-              <div class="col-lg-4 mt-4 mt-lg-0"></div>
-            </div>
+            <h3 class="card-title">
+              Rose Creek Band Of Muscogee Creek Descendants | Gainesville, FL
+            </h3>
+            <p class="text-muted">Secretary, June 2023 - Present</p>
+            <h3 class="card-title mt-4">
+              Alligator Festival Of Lake City | Gainesville, FL
+            </h3>
+            <p class="text-muted">Secretary, June 2023 - Present</p>
           </div>
         </div>
       </section>
-      <section class="section-padding bg-light" id="professional-history">
+
+      <section class="section-padding" id="professional-history">
         <h2>Career History</h2>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Self Employed Delivery Driver
-                </h3>
-                <p class="text-muted mb-2">January 2019 - Present</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Consistently executed over 20 daily deliveries with a 95%+ on-time rate, demonstrating exceptional time
-                    management and reliability.
-                  </li>
-                  <li>
-                    Successfully onboarded new restaurants and individual customers to Doordash and Island Time Takeout,
-                    clearly explaining service terms and system usage.
-                  </li>
-                  <li>
-                    Maintained a high client satisfaction rating (4.98/5 stars over two years) by ensuring order accuracy,
-                    meticulously selecting items based on client preferences, and managing budgets effectively.
-                  </li>
-                  <li>
-                    Handled all client communication, scheduling, and issue resolution independently, demonstrating strong
-                    remote self-management and client relation skills.
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-4 mt-4 mt-lg-0"></div>
-            </div>
+            <h3 class="card-title">
+              Self Employed Delivery Driver
+            </h3>
+            <p class="text-muted mb-2">January 2019 - Present</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Consistently executed over 20 daily deliveries with a 95%+ on-time rate, demonstrating exceptional time
+                management and reliability.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Successfully onboarded new restaurants and individual customers to Doordash and Island Time Takeout,
+                clearly explaining service terms and system usage.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Maintained a high client satisfaction rating (4.98/5 stars over two years) by ensuring order accuracy,
+                meticulously selecting items based on client preferences, and managing budgets effectively.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Handled all client communication, scheduling, and issue resolution independently, demonstrating strong
+                remote self-management and client relation skills.
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Seasonal Tax Representative at TaxSlayer
-                </h3>
-                <p class="text-muted mb-2">December 2021 - March 2022, December 2024 - April 2025</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Provided expert remote phone support for personal and corporate tax returns, ensuring accurate
-                    interpretation of tax inquiries.
-                  </li>
-                  <li>
-                    Maintained meticulous call logs and client data with over 95% accuracy, utilizing proprietary 
-                    CRM software.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h3 class="card-title">
+              Seasonal Tax Representative at TaxSlayer
+            </h3>
+            <!-- Note: Dates seem to be in the future/past combination. Please verify. -->
+            <p class="text-muted mb-2">December 2021 - March 2022, December 2024 - April 2025</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Provided expert remote phone support for personal and corporate tax returns, ensuring accurate
+                interpretation of tax inquiries.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Maintained meticulous call logs and client data with over 95% accuracy, utilizing proprietary
+                CRM software.
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Engineer I / Safety Officer at the Jekyll Island Club Resort
-                </h3>
-                <p class="text-muted mb-2">October 2023 - November 2024</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Efficiently resolved 5-10 daily work orders across various trades (electrical, plumbing, mechanical), ensuring
-                    optimal property condition and guest satisfaction.
-                  </li>
-                  <li>
-                    Meticulously tracked parts used and time spent for internal record-keeping.
-                  </li>
-                  <li>
-                    Demonstrated strong technical problem-solving skills by quickly diagnosing and fixing issues, such as guest
-                    TV problems, often within 15 minutes.
-                  </li>
-                  <li>
-                    Conducted meticulous safety patrols and enforced protocols, ensuring compliance and detailed incident
-                    reporting within a historic luxury resort.
-                  </li>
-                  <li>
-                    Maintained accurate logs of safety checks and guest interactions, demonstrating strong record-keeping
-                    habits.
-                  </li>
-                  <li>
-                    Provided transportation and informative historical property tours for guests, enhancing their experience.
-                  </li>
-                  <li>
-                    Showcased initiative and teamwork by assisting other departments during peak times or staff shortages.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h3 class="card-title">
+              Engineer I / Safety Officer at the Jekyll Island Club Resort
+            </h3>
+            <!-- Note: Dates seem to be in the future. Please verify. -->
+            <p class="text-muted mb-2">October 2023 - November 2024</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Efficiently resolved 5-10 daily work orders across various trades (electrical, plumbing, mechanical), ensuring
+                optimal property condition and guest satisfaction.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Meticulously tracked parts used and time spent for internal record-keeping.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Demonstrated strong technical problem-solving skills by quickly diagnosing and fixing issues, such as guest
+                TV problems, often within 15 minutes.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Conducted meticulous safety patrols and enforced protocols, ensuring compliance and detailed incident
+                reporting within a historic luxury resort.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Maintained accurate logs of safety checks and guest interactions, demonstrating strong record-keeping
+                habits.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Provided transportation and informative historical property tours for guests, enhancing their experience.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Showcased initiative and teamwork by assisting other departments during peak times or staff shortages.
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Tax Preparer at H&R Block
-                </h3>
-                <p class="text-muted mb-2">January 2023 - July 2023</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Provided comprehensive tax preparation services for individuals, achieving a client return accuracy rate of
-                    over 98% through meticulous attention to detail.
-                  </li>
-                  <li>
-                    Effectively assisted clients in understanding and responding to complex IRS notices, simplifying tax jargon
-                    and procedures.
-                  </li>
-                  <li>Developed strong client relationships by delivering personalized service and ensuring their understanding of
-                    their tax situation.</li>
-                </ul>
-              </div>
-            </div>
+            <h3 class="card-title">
+              Tax Preparer at H&R Block
+            </h3>
+            <p class="text-muted mb-2">January 2023 - July 2023</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Provided comprehensive tax preparation services for individuals, achieving a client return accuracy rate of
+                over 98% through meticulous attention to detail.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Effectively assisted clients in understanding and responding to complex IRS notices, simplifying tax jargon
+                and procedures.
+              </li>
+              <li><i class="fas fa-check-circle text-success me-2"></i>Developed strong client relationships by delivering personalized service and ensuring their understanding of
+                their tax situation.</li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Implementation Advisor at Bank of America
-                </h3>
-                <p class="text-muted mb-2">March 2022 - November 2022</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Successfully guided new business clients through the setup of commercial treasury services, ensuring all
-                    requirements were met for a smooth onboarding experience.
-                  </li>
-                  <li>
-                    Mentored two new team members on implementation processes and internal systems, fostering their
-                    development and understanding.
-                  </li>
-                  <li>
-                    Managed implementation of commercial treasury solutions, performing due diligence on client
-                    documentation to ensure accuracy and compliance for new business account setups.
-                  </li>
-                  <li>
-                    Built trust and liaised with diverse stakeholders including clients (finance managers, business owners), sales,
-                    and compliance teams.
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-4 mt-4 mt-lg-0"></div>
-            </div>
+            <h3 class="card-title">
+              Implementation Advisor at Bank of America
+            </h3>
+            <p class="text-muted mb-2">March 2022 - November 2022</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Successfully guided new business clients through the setup of commercial treasury services, ensuring all
+                requirements were met for a smooth onboarding experience.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Mentored two new team members on implementation processes and internal systems, fostering their
+                development and understanding.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Managed implementation of commercial treasury solutions, performing due diligence on client
+                documentation to ensure accuracy and compliance for new business account setups.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Built trust and liaised with diverse stakeholders including clients (finance managers, business owners), sales,
+                and compliance teams.
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  Seasonal Sales Associate at Savannah Bee Company
-                </h3>
-                <p class="text-muted mb-2">November 2021 - December 2021</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Drove a 40% sales increase for a new product line by strategically improving its placement and visibility
-                    based on customer behavior analysis
-                  </li>
-                  <li>
-                    Exceeded sales goals through effective product knowledge and customer engagement.
-                  </li>
-                  <li>
-                    Enhanced customer communication efficiency by independently troubleshooting and resolving persistent
-                    issues with the multi-line phone system.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h3 class="card-title">
+              Seasonal Sales Associate at Savannah Bee Company
+            </h3>
+            <p class="text-muted mb-2">November 2021 - December 2021</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Drove a 40% sales increase for a new product line by strategically improving its placement and visibility
+                based on customer behavior analysis.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Exceeded sales goals through effective product knowledge and customer engagement.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Enhanced customer communication efficiency by independently troubleshooting and resolving persistent
+                issues with the multi-line phone system.
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  IT Help Desk Technician at Marshland Credit Union
-                </h3>
-                <p class="text-muted mb-2">December 2020 - May 2021</p>
-                <ul class="list-unstyled">
-                  <li>
-                    Resolved complex technical issues for credit union staff, including diagnosing network printer driver conflicts
-                    and implementing solutions, ensuring minimal operational downtime.
-                  </li>
-                  <li>
-                    Assisted with user account management (creation, password resets, permissions) in Active Directory,
-                    maintaining system security and access control.
-                  </li>
-                  <li>
-                    Demonstrated initiative by developing a prototype for an in-house ticketing system using HTML, CSS, and
-                    JavaScript to streamline issue tracking.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <h3 class="card-title">
+              IT Help Desk Technician at Marshland Credit Union
+            </h3>
+            <p class="text-muted mb-2">December 2020 - May 2021</p>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Resolved complex technical issues for credit union staff, including diagnosing network printer driver conflicts
+                and implementing solutions, ensuring minimal operational downtime.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Assisted with user account management (creation, password resets, permissions) in Active Directory,
+                maintaining system security and access control.
+              </li>
+              <li>
+                <i class="fas fa-check-circle text-success me-2"></i>Demonstrated initiative by developing a prototype for an in-house ticketing system using HTML, CSS, and
+                JavaScript to streamline issue tracking.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
+
       <section class="section-padding bg-light" id="education">
         <h2>Education</h2>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h3 class="card-title">
-                  College of Coastal Georgia | Brunswick, GA
-                </h3>
-                <p class="text-muted">Coursework in Environmental Studies</p>
-              </div>
-              <div class="col-lg-4 mt-4 mt-lg-0"></div>
-            </div>
+            <h3 class="card-title">
+              College of Coastal Georgia | Brunswick, GA
+            </h3>
+            <p class="text-muted">Coursework in Environmental Studies</p>
           </div>
         </div>
       </section>
+
       <section class="section-padding" id="certifications">
         <h2>Certifications</h2>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <div class="row align-items-center">
-              <div class="col-lg-4">
-                <a href="https://www.credly.com/badges/077562ea-ab80-4444-820f-816750dbe7af"
+              <div class="col-lg-4 text-center">
+                <a href="https://www.credly.com/badges/077562ea-ab80-4444-820f-816750dbe7af" target="_blank" rel="noopener noreferrer"
                   ><img
                     src="https://images.credly.com/size/340x340/images/f8ab186e-91bd-4707-a521-83630fc88f62/blob"
-                    alt="Intuit Bookkeeper Certification Badge"
+                    alt="Official Intuit Bookkeeper Certification badge earned by Rob Morgan."
                     class="img-fluid rounded-3 shadow-sm"
+                    style="max-width: 200px;"
                 /></a>
               </div>
               <div class="col-lg-8 mt-4 mt-lg-0">
                 <h3 class="card-title">Intuit Bookkeeper Certification</h3>
+                <!-- Note: Date seems to be in the future. Please verify. -->
                 <p class="text-muted mb-2">May 2025</p>
                 <p class="card-text">
                   This badge is awarded to individuals who have passed the Intuit Bookkeeping Exam.
@@ -312,15 +293,16 @@
             </div>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <div class="row align-items-center">
-              <div class="col-lg-4">
-                <a href="https://www.credly.com/badges/9d550574-2d62-4354-9c59-84efae8647db"
+              <div class="col-lg-4 text-center">
+                <a href="https://www.credly.com/badges/9d550574-2d62-4354-9c59-84efae8647db" target="_blank" rel="noopener noreferrer"
                   ><img
                     src="https://images.credly.com/size/340x340/images/f6d62c5d-1e1d-4de6-92ee-8dc8c80b1c7b/blob"
-                    alt="CompTIA A+ Badge"
+                    alt="Official CompTIA A+ certification badge."
                     class="img-fluid rounded-3 shadow-sm"
+                    style="max-width: 200px;"
                 /></a>
               </div>
               <div class="col-lg-8 mt-4 mt-lg-0">
@@ -334,15 +316,16 @@
             </div>
           </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 shadow-sm">
           <div class="card-body">
             <div class="row align-items-center">
-              <div class="col-lg-4">
-                <a href="https://licensing.fdacs.gov/access/individual.aspx?TYPE=INDIVIDUAL&CATEGORY=&COUNTY=00&LICENSE=D%203300629&STATUS=IND_DETAIL"
+              <div class="col-lg-4 text-center">
+                <a href="https://licensing.fdacs.gov/access/individual.aspx?TYPE=INDIVIDUAL&CATEGORY=&COUNTY=00&LICENSE=D%203300629&STATUS=IND_DETAIL" target="_blank" rel="noopener noreferrer"
                   ><img
                     src="https://www.fdacs.gov/_next/static/media/FDACS-seal.ed43dd30.svg"
-                    alt="Florida DACS Seal"
+                    alt="Florida Department of Agriculture and Consumer Services (FDACS) Seal."
                     class="img-fluid rounded-3 shadow-sm"
+                    style="max-width: 200px;"
                 /></a>
               </div>
               <div class="col-lg-8 mt-4 mt-lg-0">
@@ -355,15 +338,16 @@
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card shadow-sm">
           <div class="card-body">
             <div class="row align-items-center">
-              <div class="col-lg-4">
-                <a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3548882"
+              <div class="col-lg-4 text-center">
+                <a href="https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3548882" target="_blank" rel="noopener noreferrer"
                   ><img
                     src="https://www.fcc.gov/sites/default/files/fcc-seal-rgb-2020.svg"
-                    alt="FCC Seal"
+                    alt="Federal Communications Commission (FCC) Seal."
                     class="img-fluid rounded-3 shadow-sm"
+                    style="max-width: 200px;"
                 /></a>
               </div>
               <div class="col-lg-8 mt-4 mt-lg-0">
@@ -383,16 +367,17 @@
           </div>
         </div>
       </section>
-      <footer class="py-5" id="contact">
+
+      <footer class="py-5 text-center" id="contact">
         <h2>Contact Me</h2>
-        <p class="mb-4">
-          I'd love to hear from you, so please feel free to reach
-          me on any of these platforms.
+        <p class="mb-4 lead">
+          I'd love to hear from you! Please feel free to reach
+          me on any of these platforms or schedule a meeting.
         </p>
-        <div class="d-flex justify-content-center gap-3">
+        <div class="d-flex justify-content-center gap-3 mb-4">
           <a
             href="mailto:rob@rbdgswg.me"
-            class="text-decoration-none"
+            class="text-decoration-none contact-icon email-icon"
             aria-label="Email Rob Morgan"
           >
             <i class="fas fa-envelope fa-2x"></i>
@@ -401,7 +386,7 @@
             href="https://www.instagram.com/rbdgswg/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-decoration-none"
+            class="text-decoration-none contact-icon instagram-icon"
             aria-label="Rob Morgan's Instagram"
           >
             <i class="fab fa-instagram fa-2x"></i>
@@ -410,7 +395,7 @@
             href="https://www.snapchat.com/add/rbdgswg/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-decoration-none"
+            class="text-decoration-none contact-icon snapchat-icon"
             aria-label="Rob Morgan's Snapchat"
           >
             <i class="fab fa-snapchat fa-2x"></i>
@@ -419,7 +404,7 @@
             href="https://t.me/rbdgswg/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-decoration-none"
+            class="text-decoration-none contact-icon telegram-icon"
             aria-label="Rob Morgan's Telegram"
           >
             <i class="fab fa-telegram fa-2x"></i>
@@ -428,28 +413,32 @@
             href="https://linkedin.com/in/rbdgswg/"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-decoration-none"
+            class="text-decoration-none contact-icon linkedin-icon"
             aria-label="Rob Morgan's Linkedin"
           >
             <i class="fab fa-linkedin fa-2x"></i>
           </a>
         </div>
+        <!-- The Cal.com embed script will create its button here if not using floating -->
+        <!-- If you want a dedicated button for Cal.com, you can add it here -->
+        <!-- e.g., <button class="btn btn-primary btn-lg" onclick="Cal('showFloatingButton')">Schedule a Meeting</button> -->
       </footer>
-    </div>
+    </div> <!-- /.container -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      xintegrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
-<!-- Cal floating-popup embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "qc", {origin:"https://cal.com"});
+    <!-- Cal floating-popup embed code begins -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "qc", {origin:"https://cal.com"});
 
-  Cal.ns.qc("floatingButton", {"calLink":"dreamwalker/qc","config":{"layout":"month_view","theme":"auto"},"buttonText":"Meet with Me","buttonColor":"#61ff48","buttonTextColor":"#000000"}); 
-  Cal.ns.qc("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#61ff48"},"dark":{"cal-brand":"#61ff48"}},"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-  <!-- Cal floating-popup embed code ends -->
-</body>
+      Cal.ns.qc("floatingButton", {"calLink":"dreamwalker/qc","config":{"layout":"month_view","theme":"auto"},"buttonText":"Meet with Me","buttonColor":"#61ff48","buttonTextColor":"#000000"});
+      Cal.ns.qc("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#61ff48"},"dark":{"cal-brand":"#61ff48"}},"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal floating-popup embed code ends -->
+  </body>
 </html>

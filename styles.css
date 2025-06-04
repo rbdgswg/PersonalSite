@@ -1,324 +1,268 @@
-/* You can significantly reduce the amount of CSS by using a more organized approach */
-
 /* Custom Properties (CSS Variables) for consistent styling */
 :root {
   --rubik-font: 'Rubik', sans-serif;
-  --primary-text-color: #000; /* Black */
-  --secondary-text-color: #6c757d; /* Light gray, often used for muted text */
-  --section-padding: 5%; /* Consider using rem or em for better scalability */
-  --title-image-radius: 20px;
-  --max-width: 1200px; /*Limiting the width can improve readability*/
+  --primary-text-color: #212529; /* Bootstrap's default body color for better theme consistency */
+  --secondary-text-color: #6c757d; /* Bootstrap's muted text color */
+  --section-padding-y: 3rem; /* Vertical padding for sections */
+  --card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow for cards */
+  --link-color: #0d6efd; /* Bootstrap's default link color */
+  --link-hover-color: #0a58ca; /* Bootstrap's default link hover color */
+  --brand-green: #61ff48; /* Your brand green for Cal.com consistency */
 }
 
 body {
   font-family: var(--rubik-font);
   color: var(--primary-text-color);
+  line-height: 1.6;
+  position: relative; /* Needed for canvas positioning */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Granim Canvas Styles */
 #canvas-image-blending {
-  position: absolute;
-  inset: 0; /* Shorthand for top, right, bottom, left: 0; */
+  position: fixed; /* Changed to fixed to stay in background during scroll */
+  top: 0;
+  left: 0;
   width: 100%;
-  height: vh ; /* Consider making this responsive with vh or % */
+  height: 100vh; /* Corrected to 100vh for full viewport height */
+  z-index: -1; /* Ensure it's behind all other content */
 }
 
 .main-content {
-  padding: var(--section-padding);
-  max-width: var(--max-width); /*Added max width for better readability*/
-  margin: 0 auto; /*Center the main content*/
+  position: relative; /* To ensure it's above the fixed canvas */
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.8); /* Slight white background to ensure text readability over canvas */
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
 }
+
+/* Add a container class if not using Bootstrap's .container for main content area */
+/* For example:
+.content-wrapper {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+*/
+
 
 /* Typography */
-h1,
-h2,
-h3 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--rubik-font);
-  color: var(--primary-text-color);
-  margin-bottom: 1rem; /* Use rem for vertical spacing */
-  line-height: 1.2; /* Improves readability of headings */
+  font-weight: 500; /* Slightly bolder for headings */
+  margin-bottom: 1rem;
+  line-height: 1.3;
 }
 
-h1 {
-  font-size: 3rem;
+h1 { /* For main page title like "Hi, my name is Rob Morgan" */
+  font-size: 2.8rem; /* Responsive font size can be added via media queries */
   font-weight: 700;
 }
 
-h2 {
+h2 { /* For section titles like "Introduction", "Career History" */
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 1.5rem; /* More space below section titles */
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--brand-green); /* Accent line */
+  display: inline-block; /* To make border only as wide as text */
 }
 
-h3 {
-  font-size: 1.2rem;
+h3 { /* For card titles, job titles, certification names */
+  font-size: 1.4rem;
   font-weight: 500;
+  color: var(--primary-text-color);
 }
 
 p {
   font-family: var(--rubik-font);
-  font-size: 1.1rem;  /*slightly reduced to avoid the very large text*/
-  font-weight: 400;
-  color: var(--primary-text-color);
-  line-height: 1.6; /* Improves readability of paragraphs */
-}
-
-.time-text {
-  font-family: var(--rubik-font);
   font-size: 1rem;
-  font-weight: 300; /* Lighter font weight */
-  color: var(--secondary-text-color);
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
-ul {
-  list-style-position: inside;
-  list-style-type: disc;
-  padding-left: 0; /* Reset default padding */
+p.lead { /* For introductory paragraphs or important stand-out text */
+  font-size: 1.15rem;
+  font-weight: 400;
 }
 
-ul li{
-  margin-bottom: 0.5rem; /*spacing for list items*/
+.text-muted {
+  color: var(--secondary-text-color) !important; /* Ensure Bootstrap override if needed */
+  font-size: 0.9rem;
 }
 
-/* Image Styles */
-.title-image {
-  border-radius: var(--title-image-radius);
-  width: 100%; /* Make images responsive within their container */
-  max-width: 400px; /*Added a max width*/
-  height: auto; /*Maintain aspect ratio*/
-}
-.img-fluid{
-  width: 300px;
-  height: auto; /* Browser calculates height to maintain aspect ratio */
-}
-/* Flexbox Layout */
-.d-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem; /* Use gap for consistent spacing in flexbox layouts */
-}
-.flex-column{
-  flex-direction: column;
+ul.list-unstyled li {
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+  display: flex; /* Align icon and text */
+  align-items: flex-start; /* Align items to the start of the flex container */
 }
 
-.justify-content-center {
-  justify-content: center;
-}
-.align-items-center{
-  align-items: center;
-}
-
-.flex-container-reverse {
-  flex-direction: row-reverse;
+ul.list-unstyled li .fas { /* Styling for Font Awesome icons in lists */
+  margin-right: 0.75rem; /* Space between icon and text */
+  margin-top: 0.25em; /* Adjust icon vertical alignment */
+  color: var(--brand-green); /* Use brand color for icons */
 }
 
-.big-container-left {
-  flex: 70%;
-  min-width: 250px; /*Prevent containers from collapsing*/
-  text-align: left;
+
+/* Sections */
+.section-padding {
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
 }
 
-.small-container-right {
-  flex: 30%;
-   min-width: 200px;
-  text-align: right;
+.bg-light { /* Bootstrap's default is #f8f9fa, which is fine */
+  background-color: #f8f9fa !important;
 }
 
-.big-container-right {
-  flex: 70%;
-   min-width: 250px;
-  text-align: left;
+/* Cards */
+.card {
+  border: none; /* Remove default card border if using shadows */
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.small-container-left {
-  flex: 30%;
-  min-width: 200px;
-  text-align: left;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-/*Contact Icons*/
-.contact-icons {
-  display: flex;
-  justify-content: center; /* Centers the icons horizontally */
-  gap: 1rem; /* space between icons */
-  margin-top: 2rem;
+.card-title {
+  margin-bottom: 0.5rem; /* Adjust spacing for card titles */
+}
+
+/* Images */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+.rounded-3 {
+  border-radius: 0.3rem !important; /* Bootstrap's default, ensure it applies */
+}
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important; /* Bootstrap's default */
+}
+.shadow-sm {
+ box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important; /* Bootstrap's default */
+}
+
+/* Header specific styling */
+header#introduction-header { /* If you create a specific header section */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  color: #fff; /* Assuming dark background from Granim */
+}
+header#introduction-header h1 {
+  color: #fff;
+}
+header#introduction-header #app { /* Typewriter text */
+  color: #f8f9fa; /* Lighter color for readability on potentially dark Granim */
+  min-height: 2.4em; /* Reserve space for typewriter lines */
+}
+
+
+/* Footer & Contact Icons */
+footer {
+  background-color: #343a40; /* Dark background for footer */
+  color: #f8f9fa; /* Light text color for footer */
+  padding-top: var(--section-padding-y);
+  padding-bottom: var(--section-padding-y);
+}
+
+footer h2 {
+  color: #fff;
+  border-bottom-color: var(--brand-green);
+}
+
+footer p.lead {
+  color: #adb5bd; /* Lighter muted text for footer */
 }
 
 .contact-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Reduced size, original was 60px which was too large*/
-  height: 40px;
-  font-size: 20px;
-  text-decoration: none;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem; /* Slightly larger icons */
+  color: #fff; /* Icon color */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
   border-radius: 50%;
-  transition: opacity 0.2s ease-in-out;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .contact-icon:hover {
-  opacity: 0.7;
+  background-color: var(--brand-green);
+  color: #212529; /* Dark color on hover for contrast */
 }
 
-.contact-icon i {
-  color: white; /* All icons are white */
-}
+/* Specific icon hover colors could be added if desired, but a general one is fine */
+/* Example:
+.email-icon:hover { background-color: #your-email-brand-color; }
+*/
 
-.email-icon {
-  background-color: #61f53c;
-}
 
-.instagram-icon {
-  background-color: #61f53c;
-}
-
-.snapchat-icon {
-  background-color: #61f53c;
-}
-
-.telegram-icon {
-  background-color: #61f53c;
-}
-
-/* Modal Styles - Keep these, but consider refactoring if you have many modals */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 90%;
-  max-width: 600px; /*Added a max width*/
-  border-radius: 0.5rem;
-  position: relative; /* Needed for absolute positioning of close button */
-}
-
-.close-button {
-  color: #aaa;
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-button:hover,
-.close-button:focus {
-  color: #000;
-  text-decoration: none;
-}
-
-/*Progress bars*/
-.progressbar {
-  width: 80%;
-  height: 10px;
-  background-color: #ddd;
-  margin: 1rem 0;
-  border-radius: 0.5rem;
-  position: relative;
-}
-
-.progressbar-bar {
-  height: 10px;
-  background-color: #4caf50;
-  border-radius: 0.5rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.italian {
-  width: 100%;
-}
-
-.english {
-  width: 100%;
-}
-
-.german {
-  width: 85%;
-}
-
-.mandarin {
-  width: 20%;
-}
-
-/* Responsive adjustments (Mobile-first approach) */
+/* Responsive adjustments */
 @media (max-width: 768px) { /* Tablets and smaller */
-  .main-content {
-    padding: 2rem 1rem; /* Reduced padding on small screens */
-  }
   h1 {
-    font-size: 2.5rem; /* Smaller heading on mobile */
+    font-size: 2.2rem;
   }
   h2 {
     font-size: 1.8rem;
   }
-  h3{
+  h3 {
     font-size: 1.2rem;
   }
-  p{
-    font-size: 1rem;
+  p, p.lead {
+    font-size: 0.95rem;
   }
-
-  .flex-container-reverse {
-    flex-direction: column-reverse;
-  }
-
-  .big-container-left,
-  .small-container-right,
-  .big-container-right,
-  .small-container-left {
-    flex: 100%;
-    text-align: center;
-  }
-  .small-container-right,
-  .small-container-left{
-    margin-bottom: 1rem;
-  }
-  .header-image{
-    width: 100%;
-    max-height: 300px;
-  }
-  #canvas-image-blending{
-    height: 600px; /*adjust height for small screens*/
+  .main-content {
+    /* Remove background for full bleed canvas on mobile if preferred, or adjust opacity */
+    /* background-color: transparent; */
   }
 }
 
-/*For very small screens*/
-@media (max-width: 576px) {
+@media (max-width: 576px) { /* Small mobile devices */
   h1 {
     font-size: 2rem;
   }
-  h2{
+  h2 {
     font-size: 1.6rem;
   }
-  h3{
-    font-size: 1rem;
-  }
-  p{
-    font-size: 0.9rem;
-  }
-  .contact-icons {
-    gap: 0.5rem; /* Reduced icon spacing on very small screens */
-  }
   .contact-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
   }
-  #canvas-image-blending{
-    height: 500px;
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+   header#introduction-header #app {
+    min-height: 3.6em; /* May need more space if text wraps to more lines */
   }
 }
+
+/* Ensure Cal.com button is styled nicely if it appears in the footer */
+footer .cal-floating-button-container button, /* Adjust selector as needed */
+footer button[onclick*="Cal"] { /* Generic selector for a Cal button */
+  background-color: var(--brand-green) !important;
+  color: var(--primary-text-color) !important;
+  border: none !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  border-radius: 0.3rem !important;
+  box-shadow: var(--card-shadow) !important;
+}
+
+footer .cal-floating-button-container button:hover,
+footer button[onclick*="Cal"]:hover {
+  opacity: 0.9;
+}
+

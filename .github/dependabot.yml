@@ -5,7 +5,21 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "github-actions" # Specifies that Dependabot should check for updates to GitHub Actions
+    directory: "/" # Location of package manifests (workflows are typically in .github/workflows/)
     schedule:
-      interval: "weekly"
+      interval: "weekly" # How often to check for updates
+    # You can add reviewers or assignees for Dependabot PRs if needed
+    # reviewers:
+    #   - "your-github-username"
+    # assignees:
+    #   - "your-github-username"
+    # commit-message:
+    #   prefix: "chore" # Optional: prefix for commit messages
+    #   include: "scope" # Optional: include scope in commit messages
+
+# You could add other package ecosystems if your project evolves, for example:
+# - package-ecosystem: "npm"
+#   directory: "/" # Assuming package.json is in the root
+#   schedule:
+#     interval: "weekly"
